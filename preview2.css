@@ -29,6 +29,7 @@
 /* Preview content surfaces: keep product copy on a clean white field. */
 .experience{background:#fff}
 .experience-grid{margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;background:#fff}
+.experience-grid a{background:#fff!important}
 .experience-grid a:after{inset:0;display:none}
 .experience-grid a>span{text-align:left;position:static!important;inset:auto!important;padding:22px 0 0!important;background:transparent!important;color:var(--brown)!important;display:grid;grid-template-columns:1fr auto;gap:8px 18px}
 .event-track figcaption span{max-width:100%}
