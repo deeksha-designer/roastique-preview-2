@@ -5,8 +5,15 @@ const loopObserver=new IntersectionObserver(entries=>entries.forEach(({target,is
 
 const splitBanner=document.querySelector('.split-banner');
 const splitPanels=[...document.querySelectorAll('.split-video')];
-splitPanels.forEach(panel=>{const activate=()=>{splitPanels.forEach(item=>item.classList.toggle('is-active',item===panel))};panel.addEventListener('pointerenter',activate);panel.addEventListener('pointerdown',activate);panel.addEventListener('focusin',activate)});
-splitBanner?.addEventListener('pointerleave',()=>splitPanels.forEach(panel=>panel.classList.remove('is-active')));
+const bakeryPanel=document.querySelector('.split-video-bakery'),coffeePanel=document.querySelector('.split-video-coffee');
+const bakeryVideo=bakeryPanel?.querySelector('video'),coffeeVideo=coffeePanel?.querySelector('video');
+const activateSplit=panel=>{if(!panel)return;splitPanels.forEach(item=>item.classList.toggle('is-active',item===panel));const activeVideo=panel===coffeePanel?coffeeVideo:bakeryVideo,inactiveVideo=panel===coffeePanel?bakeryVideo:coffeeVideo;inactiveVideo?.pause();if(activeVideo){activeVideo.muted=true;activeVideo.loop=true;activeVideo.play().catch(()=>{})}};
+const bindSplitSide=(panel,copy)=>{const activate=()=>activateSplit(panel);panel?.addEventListener('pointerenter',activate);panel?.addEventListener('focusin',activate);panel?.addEventListener('pointerdown',event=>{if(event.pointerType!=='mouse')activate()});copy?.addEventListener('pointerenter',activate);copy?.addEventListener('focusin',activate);copy?.addEventListener('pointerdown',event=>{if(event.pointerType!=='mouse')activate()})};
+bindSplitSide(bakeryPanel,document.querySelector('.split-copy-bakery'));
+bindSplitSide(coffeePanel,document.querySelector('.split-copy-coffee'));
+coffeeVideo?.pause();
+if(bakeryVideo){bakeryVideo.muted=true;bakeryVideo.loop=true;bakeryVideo.play().catch(()=>{})}
+splitBanner?.addEventListener('pointerleave',()=>activateSplit(bakeryPanel));
 
 const instagramGallery=document.querySelector('.instagram-gallery');
 if(instagramGallery&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const originals=[...instagramGallery.children];originals.forEach(item=>instagramGallery.append(item.cloneNode(true)));instagramGallery.classList.add('is-looping');let raf=0,paused=true;const tick=()=>{if(!paused){instagramGallery.scrollLeft+=.35;if(instagramGallery.scrollLeft>=instagramGallery.scrollWidth/2){instagramGallery.scrollLeft=0}}raf=requestAnimationFrame(tick)};new IntersectionObserver(entries=>{paused=!entries.some(entry=>entry.isIntersecting)}).observe(instagramGallery);['pointerenter','focusin'].forEach(type=>instagramGallery.addEventListener(type,()=>paused=true));['pointerleave','focusout'].forEach(type=>instagramGallery.addEventListener(type,()=>paused=false));tick();window.addEventListener('beforeunload',()=>cancelAnimationFrame(raf),{once:true})}

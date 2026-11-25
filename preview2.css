@@ -34,6 +34,7 @@
 .split-video-coffee{clip-path:url(#coffee-curve)!important;z-index:1}
 .split-overlay{z-index:2}
 .split-copy{z-index:3!important}
+.split-copy p{font-weight:500!important}
 .experience{background:#fff}
 .experience-grid{margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;background:#fff}
 .experience-grid a{background:#fff!important}
