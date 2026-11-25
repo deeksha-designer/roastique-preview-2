@@ -29,6 +29,11 @@
 /* Preview content surfaces: keep product copy on a clean white field. */
 .split-banner{background:var(--paper)}
 .split-banner{height:100%;min-height:85vh;background:var(--brown)}
+.split-video-bakery{clip-path:none!important;z-index:0}
+.split-video-bakery video{width:100%!important;left:0!important}
+.split-video-coffee{clip-path:url(#coffee-curve)!important;z-index:1}
+.split-overlay{z-index:2}
+.split-copy{z-index:3!important}
 .experience{background:#fff}
 .experience-grid{margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;background:#fff}
 .experience-grid a{background:#fff!important}
