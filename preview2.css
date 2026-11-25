@@ -28,6 +28,7 @@
 
 /* Preview content surfaces: keep product copy on a clean white field. */
 .split-banner{background:var(--paper)}
+.split-banner{height:100%;min-height:85vh;background:var(--brown)}
 .experience{background:#fff}
 .experience-grid{margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;background:#fff}
 .experience-grid a{background:#fff!important}
