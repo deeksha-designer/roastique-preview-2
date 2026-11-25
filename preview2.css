@@ -27,6 +27,7 @@
 @media(max-width:600px){.split-copy-bakery{left:16px;right:calc(50% + 12px)}.split-copy-coffee{left:calc(50% + 12px);right:16px}.split-copy>a{opacity:1;pointer-events:auto}.experience-grid a{grid-template-rows:300px auto}.experience-grid a>img{height:300px}.experience-grid a>span{padding:16px 0 0!important}.events>.section-heading-row{display:block}.events>.section-heading-row .section-actions{margin-top:22px;justify-content:flex-start}.events>.section-heading-row .section-actions .cta{width:auto}}
 
 /* Preview content surfaces: keep product copy on a clean white field. */
+.split-banner{background:var(--paper)}
 .experience{background:#fff}
 .experience-grid{margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;background:#fff}
 .experience-grid a{background:#fff!important}
